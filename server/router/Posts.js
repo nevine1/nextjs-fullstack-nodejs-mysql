@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
-const { Posts } = require("../models/posts"); //Posts is the table we create in the database
+const db = require("../models");
+const Posts = db.Posts;
+//const { Posts } = require("../models/posts"); //Posts is the table we create in the database
 
 router.get("/", (req, res) => {
    res.send('Hello posts')
