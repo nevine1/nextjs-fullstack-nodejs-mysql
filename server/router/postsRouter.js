@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const db = require("../models");
+const Posts = db.Posts;
+//const { Posts } = require("../models/posts"); //Posts is the table we create in the database
 
-const { Posts } = require("../models/Posts"); //Posts is the table we create in the database
-
-router.get("/", (req, res) => {
-   res.send('Hello posts')
+router.get("/", async (req, res) => {
+    const listOfPosts = await Posts.findAll();
+    res.json(listOfPosts);
+   //res.send('Hello posts')
     //res.json("hello World") json format 
 })
 
