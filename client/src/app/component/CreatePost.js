@@ -1,22 +1,29 @@
 "use client"
 import { useState } from 'react'
 import axios from 'axios';
+import { useRouter } from 'next/router';
 const CreatePost = () => {
     const [title, setTitle ] = useState('');
     const [postText, setPostText] = useState('')
     const [userName, setUserName] = useState('');
-    const  handleSubmit = (e) =>{
+    const  handleSubmit = (e, values) =>{
         e.preventDefault();
         if(title && postText && userName){
             console.log(title, postText, userName);
-            axios.post("http://localhost:3001/posts", data).then((res) =>{
-                console.log('postessssssssssss');
+            axios.post("http://localhost:3001/posts", {
+              title, postText, userName
+            }).then((res) =>{
+                console.log("it worked", res.data);
+                setTitle(" ");
+                setPostText("");
+                setUserName("");
                 
-              });
+              }).catch((error) => console.error(error));
         }
     }
   return (
     <div className="flex flex-col gap-4 items-center justify-center mt-10">
+       <h1 className="text-[20px] ">Create New Post</h1>
       <form 
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 items-center justify-center border-zinc-700 
@@ -29,6 +36,7 @@ const CreatePost = () => {
             value={title}
             onChange={(e) =>setTitle(e.target.value)}
         />
+       
         <input
             name="postText"
             type="text"

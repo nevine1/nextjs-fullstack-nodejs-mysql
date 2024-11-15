@@ -16,7 +16,7 @@ const PostsComp = () =>{
     console.log(posts)
     return(
         <div className="flex flex-col  gab-3">
-            <CreatePost/>
+         
             {
             posts.map((post) => (
                 <div key={post.id}>
