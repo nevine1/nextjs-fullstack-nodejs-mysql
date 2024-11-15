@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import CreatePost from './CreatePost';
+import SinglePost from './SinglePost';
+import Link from 'next/link'
 const PostsComp = () =>{
 
     const [posts, setPosts ] = useState([]);
@@ -15,17 +17,18 @@ const PostsComp = () =>{
       }, [])
     console.log(posts)
     return(
-        <div className="flex flex-col  gab-3">
-         
+        <div className="grid gap-6 lg:grid-cols-4 grid-cols-3 mx-10 my-3">
             {
             posts.map((post) => (
                 <div key={post.id}>
-                <h1>{post.title}</h1>
+                  <Link href={`/posts/${post.id}`}>
+                    <SinglePost post={post}/>
+                  </Link>
                 </div>
             )
             
-            )
-            }
+            )}
+      
       </div>
     )
 }

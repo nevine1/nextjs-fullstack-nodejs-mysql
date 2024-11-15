@@ -11,7 +11,8 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-5 items-center justify-center">
       <Link href="/posts/create-post/">Create Post</Link>
-       <PostsComp/>
+      <Link href="/posts">Get All Posts</Link>
+       
      
       
     </div>
