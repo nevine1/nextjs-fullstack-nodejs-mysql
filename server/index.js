@@ -11,8 +11,10 @@ const db = require("./models") // import the database has been blocked by CORS p
 //connect nodejs with the database on local host
 //router 
 const routerOfPosts = require('./router/postsRouter');
+const routerOfComments = require('./router/commentsRouter');
 
 app.use("/posts", routerOfPosts); //apply middleware for router by using app.use
+app.use("/comments", routerOfComments); //apply middleware for router by using app.use
 
 db.sequelize.sync({ force: false }).then(() => {
     app.listen(3001, () => {

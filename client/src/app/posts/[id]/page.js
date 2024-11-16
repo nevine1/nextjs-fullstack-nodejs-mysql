@@ -34,7 +34,7 @@ const Post = () => {
 
     return (
         <div className="flex flex-col gap-5 mx-12 my-6 px-20">
-            <h1 className="text-[20px] ">{post.title}</h1>
+            <h1 className="text-[22px] ">Post Title: {post.title}</h1>
             <p>{post.postText}</p>
             <p>
               This post has written by:  
