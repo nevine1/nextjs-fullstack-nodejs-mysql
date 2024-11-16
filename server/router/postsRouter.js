@@ -11,6 +11,15 @@ router.get("/", async (req, res) => {
     //res.json("hello World") json format 
 })
 
+//router to get the post details using id 
+router.get(`/byId/:id`, async (req, res) => {
+    const id = req.params.id;
+        const post = await Posts.findByPk(id); //find post by primary key PK
+        res.json(post)
+      
+});
+
+
 //send data to the database 
 router.post("/", async (req, res) => {
     const post = req.body;  //body here is the body of request(it means the post details: title, postBody, username)
