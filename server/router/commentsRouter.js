@@ -13,9 +13,9 @@ router.get("/:postId", async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
-    console.log("POST /comments hit");
+  
     const comment = req.body;
-    await Comments.create(comment)
+    await Comments.create(comment); //this code is used to insert comments to the database
      res.json(comment)
    /*  if (!comment || !postId) {
         console.error("Missing required fields");

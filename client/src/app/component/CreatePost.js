@@ -39,12 +39,14 @@ const CreatePost = () => {
             onChange={(e) =>setTitle(e.target.value)}
         />
        
-        <input
+        <textarea
             name="postText"
-            type="text"
-            className="px-3 py-2  mb-2  bg-white rounded-sm"
-            placeholder='Post title'
+           
+            className="px-3 py-2  mb-2  bg-white rounded-sm w-full"
+            placeholder='post Text'
             value={postText}
+            cols="14"
+            rows="4"
             onChange={(e) =>setPostText(e.target.value)}
         />
         <input
