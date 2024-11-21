@@ -20,11 +20,8 @@ const Post = () => {
                 setError(err);
             }
         };
-       
 
-   
-
-        /* const fetchComments = async () => {
+        const fetchComments = async () => {
             try {
                 const res = await axios.get(`http://localhost:3001/comments/${id}`);
                 console.log(res.data)
@@ -34,11 +31,11 @@ const Post = () => {
             }
         };
     
-        fetchComments(); */
+        
 
         if (id) {
             fetchPost();
-           /*  fetchComments(); */
+            fetchComments();
         }
 
     }, [id]);
@@ -52,26 +49,43 @@ const Post = () => {
     }
 
     return (
-        <div className="flex flex-col gap-5 mx-12 my-6 px-20">
-            <h1 className="text-[22px] ">Post Title: {post.title}</h1>
-            <p>{post.postText}</p>
-            <p>
-              This post has written by:  
-              <span className="text-blue-700"> {post.userName}</span>
-             </p>
-             <Link
-                href={`/posts/${post.id}/comments/`}>To Check all Comments, click here </Link>
-             <h2>Getting post comments for
+        <div className="grid grid-cols-2 gap-4 mx-12 my-4 place-items-center">
+            <div className="flex flex-col gap-3 w-[80%]">
+                <div className=" flex flex-col bg-gray-200  p-10 rounded-md shadow-md gap-5">
+                    <h1 className="text-[21px] ">
+                        Post Title: 
+                        <span className="text-blue-800 italic"> {post.title}</span>
+                    </h1>
+                    <p>
+                        Post content: 
+                        <span className="text-blue-800 italic"> {post.postText}</span>
+                    </p>
+                    <p> 
+                        This post has written by:  
+                    <span className="text-blue-800 italic"> {post.userName}</span>
+                    </p>
+                </div>
 
-                <PostComments postId={post.id}/>
-             </h2>
-             {/* <div>
-                {comments.map((comment) =>(
-                    <div key={comment.id}>
-                        {comment.comment}
+                <div className="flex flex-col bg-gray-200  p-10 rounded-md shadow-md gap-5">
+                    <h1 className="font-semibold text-[20px] px-6">Comment for {post.title}</h1>
+
+                    <div>
+                        {comments.slice(0,2).map((comment) =>(
+                            <div key={comment.id}
+                                className="bg-white px-6 py-3 mb-5 rounded-sm"
+                            >
+                                {comment.commentBody}
+                            </div>
+                        ))}
                     </div>
-                ))}
-             </div> */}
+                    <Link href={`/posts/${post.id}/comments/`}>All Comments {comments.length}</Link>
+                </div>
+            </div>
+            
+            <div className="flex flex-col gap-3 w-[80%] bg-gray-200">
+                <h1>Add Comment</h1>
+            </div>
+             
         </div>
     );
 };

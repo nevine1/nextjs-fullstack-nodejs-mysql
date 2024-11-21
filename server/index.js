@@ -16,7 +16,9 @@ const routerOfComments = require('./router/commentsRouter');
 
 //apply middleware for router by using app.use
 app.use("/posts", routerOfPosts); //it means For any request that starts with /posts, use the routes defined in routerOfPosts
-app.use("/comments", routerOfComments); 
+app.use("/comments/", routerOfComments); 
+
+
 
 db.sequelize.sync({ force: false }).then(() => {
     app.listen(3001, () => {
